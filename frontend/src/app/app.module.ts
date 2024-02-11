@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthButtonComponent } from './auth-button.component';
 import { environment } from '../../environment/environment';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { environment } from '../../environment/environment';
     AppRoutingModule,
     ButtonModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     AuthModule.forRoot({
       domain: environment.domain,
       clientId: environment.clientId,

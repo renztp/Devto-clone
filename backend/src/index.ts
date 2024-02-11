@@ -8,9 +8,9 @@ dotenv.config()
 const port = process.env.PORT || 8080;
 
 const jwtCheck = auth({
-  audience: 'https://www.dev-to-clone-api.com',
+  audience: process.env.AUDIENCE,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
-  tokenSigningAlg: 'RS256'
+  tokenSigningAlg: process.env.TOKENSINGINGALG,
 });
 
 // enforce on all endpoints
