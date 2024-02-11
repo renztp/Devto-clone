@@ -4,14 +4,21 @@ import { AuthRoutes } from "./auth.routes";
 import { AuthComponent } from "./auth.component";
 import { AuthLoginComponent } from "./auth-login/auth-login.component";
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CardModule } from 'primeng/card'
+import { ButtonModule } from "primeng/button";
+import { AuthRegisterComponent } from "./auth-register/auth-register.component";
 
 @NgModule({
-  declarations: [AuthComponent, AuthLoginComponent],
+  declarations: [AuthComponent, AuthLoginComponent, AuthRegisterComponent],
   imports: [
     RouterModule.forChild(AuthRoutes),
     CheckboxModule,
-    FormsModule
+    FormsModule,
+    CardModule,
+    CheckboxModule,
+    ReactiveFormsModule,
+    ButtonModule
   ],
   exports: [AuthComponent]
 })
