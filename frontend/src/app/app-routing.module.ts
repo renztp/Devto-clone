@@ -4,10 +4,6 @@ import { AuthButtonComponent } from '../components/auth/auth-button.component';
 
 const routes: Routes = [
   {
-    path: 'auth-button',
-    component: AuthButtonComponent,
-  },
-  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
