@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CardModule } from 'primeng/card'
 import { ButtonModule } from "primeng/button";
 import { AuthRegisterComponent } from "./auth-register/auth-register.component";
+import { AuthService } from "@auth0/auth0-angular";
 
 @NgModule({
   declarations: [AuthComponent, AuthLoginComponent, AuthRegisterComponent],
@@ -20,6 +21,7 @@ import { AuthRegisterComponent } from "./auth-register/auth-register.component";
     ReactiveFormsModule,
     ButtonModule
   ],
-  exports: [AuthComponent]
+  exports: [AuthComponent],
+  providers: [AuthService]
 })
 export class AuthModule {}

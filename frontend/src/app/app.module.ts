@@ -6,30 +6,65 @@ import { AppComponent } from './app.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthButtonComponent } from './auth-button.component';
 import { environment } from '../../environment/environment';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../service/auth/auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthButtonComponent } from '../components/auth/auth-button.component';
+
+// Import the HTTP interceptor from the Auth0 Angular SDK
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { UserMetadataComponent } from '../components/user/user-meta-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthButtonComponent
+    AuthButtonComponent,
+    UserMetadataComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AuthModule.forRoot({
+      // The domain and clientId were configured in the previous chapter
       domain: environment.domain,
       clientId: environment.clientId,
+
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin,
+
+        // Request this audience at user authentication time
+        audience: environment.auth0Audience,
+
+        // Request this scope at user authentication time
+        scope: 'read:current_user',
+      },
+
+      // Specify configuration for the interceptor
+      httpInterceptor: {
+        allowedList: [
+          {
+            // Match any request that starts 'https://dev-40vwmq120o5q42sc.us.auth0.com/api/v2/' (note the asterisk)
+            uri: environment.auth0AudienceApi,
+            tokenOptions: {
+              authorizationParams: {
+                // The attached token should target this audience
+                audience: environment.auth0Audience,
+
+                // The attached token should have these scopes
+                scope: 'read:current_user'
+              }
+            }
+          }
+        ]
       }
-    }),
+    })
   ],
-  providers: [],
+  providers: [AuthService, {provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
