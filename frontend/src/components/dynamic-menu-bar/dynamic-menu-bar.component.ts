@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Inject, Input, OnInit } from "@angular/core";
+import { AuthService } from "@auth0/auth0-angular";
 import { MenuItem } from "primeng/api";
+import { DOCUMENT } from "@angular/common";
 
 @Component({
   selector: "app-dynamic-menu-bar",
@@ -8,7 +10,7 @@ import { MenuItem } from "primeng/api";
 })
 export class DynamicMenuBarComponent implements OnInit {
   @Input() items: MenuItem[] = [];
-  constructor() {
+  constructor(public auth: AuthService, @Inject(DOCUMENT) public document: Document) {
     this.items = [
       {
         label: "File",

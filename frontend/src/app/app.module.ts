@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from '@auth0/auth0-angular';
-import { ButtonModule } from 'primeng/button';
-import {MenubarModule} from 'primeng/menubar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../../environment/environment';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,8 +26,6 @@ import { DynamicMenuBarComponent } from '../components/dynamic-menu-bar/dynamic-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ButtonModule,
-    MenubarModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
