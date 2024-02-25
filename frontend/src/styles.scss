@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 // @layer reset, primeng;
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: rgb(245, 245, 245);
+}
+
+.container {
+  width: 100%;
+  @apply max-w-container;
+  margin: 0 auto;
+}

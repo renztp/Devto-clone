@@ -1,0 +1,29 @@
+<div class="border-b border-b-grey-600 mb-5 bg-white">
+  <div class="dynamic-menu flex justify-between py-3 container items-center">
+    <div class="dynamic-menu__start flex">
+      <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png" class="w-12 d-inline mr-3" alt="">
+      <form action="">
+        <input class="h-10 border border-gray-400 rounded px-3" placeholder="Search..." type="text">
+      </form>
+    </div>
+
+    <div class="dynamic-menu__end flex items-center">
+      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <div *ngFor="let item of items" class="mr-3">
+          <a href="#">{{item.label}}</a>
+        </div>
+
+        <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+          Log out
+        </button>
+      </ng-container>
+
+      <ng-template #loggedOut>
+        <button (click)="auth.loginWithRedirect()" class="mr-3">Log in</button>
+        <button (click)="auth.loginWithRedirect()" class="border border-blue-500 px-3 py-2 rounded">Create Account</button>
+      </ng-template>
+      <!-- <app-auth-button></app-auth-button> -->
+    </div>
+  </div>
+</div>
+

@@ -12,7 +12,8 @@ import { DOCUMENT } from '@angular/common';
     </ng-container>
 
     <ng-template #loggedOut>
-      <button (click)="auth.loginWithRedirect()">Log in</button>
+      <button (click)="auth.loginWithRedirect()" class="mr-3">Log in</button>
+      <button (click)="auth.loginWithRedirect()" class="border border-blue-500 px-3 py-2 rounded">Create Account</button>
     </ng-template>
   `,
   styles: [],
