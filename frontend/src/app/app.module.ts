@@ -14,20 +14,22 @@ import { AuthButtonComponent } from '../components/auth/auth-button.component';
 // Import the HTTP interceptor from the Auth0 Angular SDK
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { UserMetadataComponent } from '../components/user/user-meta-data.component';
+import { ComponentsModule } from '../components/components.module';
 import { DynamicMenuBarComponent } from '../components/dynamic-menu-bar/dynamic-menu-bar.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthButtonComponent,
     UserMetadataComponent,
-    DynamicMenuBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ComponentsModule,
     ReactiveFormsModule,
     AuthModule.forRoot({
       // The domain and clientId were configured in the previous chapter
@@ -48,7 +50,6 @@ import { DynamicMenuBarComponent } from '../components/dynamic-menu-bar/dynamic-
       httpInterceptor: {
         allowedList: [
           {
-            // Match any request that starts 'https://dev-40vwmq120o5q42sc.us.auth0.com/api/v2/' (note the asterisk)
             uri: environment.auth0AudienceApi,
             tokenOptions: {
               authorizationParams: {

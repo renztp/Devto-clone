@@ -13,6 +13,10 @@ const jwtCheck = auth({
   tokenSigningAlg: process.env.TOKENSINGINGALG,
 });
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello World');
+});
+
 // enforce on all endpoints
 app.use(jwtCheck);
 

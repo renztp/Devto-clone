@@ -1,0 +1,16 @@
+<div>
+  <div class="bg-white p-4 border border-slate-300 rounded rounded-md mb-5">
+    <h2 class="font-bold">DEV Community is a community of 1,319,496 amazing developers</h2>
+    <p class="my-2">We're a place where coders share, stay up-to-date and grow their careers.</p>
+    <button class="block text-center w-full border border-blue-500 px-3 py-2 rounded">Create Account</button>
+    <button class="block text-center w-full px-3 py-2 rounded">Log In</button>
+  </div>
+  <ul>
+
+  @for(item of navLinks; track item.name) {
+    <li class="mb-4 flex items-center"><a [routerLink]="[item.url]"><ng-icon class="mr-2" name="{{item.icon}}"></ng-icon> {{item.name}}</a></li>
+  } @empty {
+    <b>There are no items.</b>
+  }
+  </ul>
+</div>
